@@ -1,4 +1,4 @@
-package com.example;
+package com.example.spring2;
 import com.example.spring2.BoardVO;
 
 import java.util.List;

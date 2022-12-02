@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false" %>
 
 <!DOCTYPE html>
 <html>
@@ -39,13 +41,14 @@
 <table id="list" width="90%">
     <tr>
         <th>Id</th>
-        <th>Category</th>
-        <th>Title</th>
-        <th>Writer</th>
-        <th>Content</th>
-        <th>Regdate</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>카테고리</th>
+        <th>제목</th>
+        <th>글쓴이</th>
+        <th>이메일</th>
+        <th>내용</th>
+        <th>등록일</th>
+        <th>수정</th>
+        <th>삭제</th>
     </tr>
     <c:forEach items="${list}" var="u">
         <tr>
@@ -53,13 +56,21 @@
             <td>${u.getCategory()}</td>
             <td>${u.getTitle()}</td>
             <td>${u.getWriter()}</td>
+            <td>${u.getEmail()}</td>
             <td>${u.getContent()}</td>
             <td>${u.getRegdate()}</td>
-            <td><a href="editform/${u.seq}">Edit</a></td>
-            <td><a href="javascript:delete_ok('${u.seq()}')">Delete</a></td>
+            <td><a href="editform/${u.seq}">글수정</a></td>
+            <td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>
         </tr>
     </c:forEach>
 </table>
-<br/><a href="add">Add New Post</a>
+<br/>
+<button type="button" onclick="location.href='add'">새글쓰기</button>
 </body>
+<script>
+    function delete_ok(id){
+        var a = confirm("정말로 삭제하겠습니다?");
+        if(a) location.href='deleteok/' +id;
+    }
+</script>
 </html>

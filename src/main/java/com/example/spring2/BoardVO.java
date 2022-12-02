@@ -6,21 +6,29 @@ public class BoardVO {
 	private int seq;
 	private String title;
 	private String writer;
-	private String email;
 	private String content;
 	private String category;
-	private String file;
+
 	private Date regdate;
+	private String email;
 
-	private Date editdate;
-	public Date getEditdate() {
-		return editdate;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEditdate(Date editdate) {
-		this.editdate = editdate;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
+	}
+
+	private String file;
 	private int cnt;
 
 	public int getSeq() {
@@ -47,13 +55,6 @@ public class BoardVO {
 		this.writer = writer;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	public String getContent() {
 		return content;
@@ -69,14 +70,6 @@ public class BoardVO {
 
 	public void setCategory(String category) {
 		this.category = category;
-	}
-
-	public String getFile() {
-		return file;
-	}
-
-	public void setFile(String file) {
-		this.file = file;
 	}
 
 	public Date getRegdate() {

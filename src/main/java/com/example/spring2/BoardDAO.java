@@ -18,21 +18,18 @@ public class BoardDAO {
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	private final String BOARD_UPDATE = "update BOARD set category=?, title=?, writer=?, email=?, content=?, file=? where seq=?";
-	private final String BOARD_DELETE = "delete from BOARD  where seq=?";
-	private final String BOARD_GET = "select * from BOARD  where seq=?";
-	private final String BOARD_LIST = "select * from BOARD order by seq desc";
-
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
 	//글 추가
 	public int insertBoard(BoardVO vo){
-		String sql = "insert into BOARD (title, writer, content, category) values ("
+		String sql = "insert into BOARD (title, writer, email, content, category, file) values ("
 				+ "'" + vo.getTitle()+"',"
 				+ "'" + vo.getWriter()+"',"
+				+ "'" + vo.getEmail()+"',"
 				+ "'" + vo.getContent()+"',"
-				+ "'" + vo.getCategory()+"')";
+				+ "'" + vo.getCategory()+"',"
+				+ "'" + vo.getFile()+"')";
 		return jdbcTemplate.update(sql);
 	}
 
@@ -47,8 +44,10 @@ public class BoardDAO {
 		String sql= "update BOARD set title = '" + vo.getTitle() +"',"
 				+ " title='" + vo.getTitle()+"',"
 				+ " writer='" + vo.getWriter()+"',"
+				+ " email='" + vo.getEmail() +"',"
 				+ " content='" + vo.getContent()+"',"
-				+ " category='" + vo.getCategory()+ "' where seq=" +vo.getSeq();
+				+ " category='" + vo.getCategory()+ "',"
+				+ " category='" + vo.getFile()+"' where seq=" +vo.getSeq();
 		return jdbcTemplate.update(sql);
 	}
 	
@@ -59,7 +58,9 @@ public class BoardDAO {
 			vo.setTitle(rs.getString("title"));
 			vo.setContent(rs.getString("content"));
 			vo.setWriter(rs.getString("writer"));
+			vo.setEmail(rs.getString("email"));
 			vo.setCategory(rs.getString("category"));
+			vo.setFile(rs.getString("file"));
 			vo.setRegdate(rs.getDate("regdate"));
 			return vo;
 		}

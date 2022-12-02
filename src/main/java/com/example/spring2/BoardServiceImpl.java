@@ -1,7 +1,5 @@
-package com.example;
+package com.example.spring2;
 
-import com.example.spring2.BoardDAO;
-import com.example.spring2.BoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
