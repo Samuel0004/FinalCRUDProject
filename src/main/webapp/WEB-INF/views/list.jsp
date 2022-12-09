@@ -38,6 +38,7 @@
 </head>
 <body>
 <h1>자유게시판</h1>
+<p1>관리자 님 안녕하세요~</p1><a href="http://localhost:8080/SpringCRUDProject_war_exploded/login/logout">logout</a>
 <table id="list" width="90%">
     <tr>
         <th>Id</th>

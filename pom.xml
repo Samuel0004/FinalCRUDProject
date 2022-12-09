@@ -10,6 +10,10 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
     <junit.version>5.8.2</junit.version>
+    <java-version>1.6</java-version>
+    <org.springframework-version>4.2.4.RELEASE</org.springframework-version>
+    <org.aspectj-version>1.6.10</org.aspectj-version>
+    <org.sfl4j-version>1.6.6</org.sfl4j-version>
   </properties>
   <name>SpringCRUDProject Maven Webapp</name>
   <url>http://maven.apache.org</url>
@@ -36,9 +40,30 @@
       <version>5.3.23</version>
     </dependency>
     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>5.3.23</version>
+    </dependency>
+    <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.5.11</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>RELEASE</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
   <build>
