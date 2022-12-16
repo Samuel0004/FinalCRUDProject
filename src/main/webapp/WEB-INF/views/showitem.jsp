@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div class="ms-3">내용</div>
+    <div class="ms-2 d-inline ps-2 pe-2" style="position: relative; top:12px; background-color: white">내용</div>
     <div id="content" class="form-control col col-12">
         ${gameVO.content}
     </div>

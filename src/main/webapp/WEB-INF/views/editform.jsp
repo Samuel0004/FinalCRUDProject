@@ -29,6 +29,10 @@
 			font-size: x-small;
 			display: none;
 		}
+		.form-rating-v{
+			color: #ffc552;
+			cursor: pointer;
+		}
 	</style>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
@@ -137,6 +141,18 @@
 		function updateRage(val){
 			document.getElementById("form-num-val").textContent = "모집인원 ("+val.value+"명)";
 		}
+
+		function setRating(val){
+			document.getElementById("form-rating").value = val;
+			for(let i = 1; i<=val; i++){
+				document.getElementById("form-rating-"+i).classList.add("bi-star-fill")
+				document.getElementById("form-rating-"+i).classList.remove("bi-star")
+			}
+			for(let i = val+1; i<=5; i++){
+				document.getElementById("form-rating-"+i).classList.add("bi-star")
+				document.getElementById("form-rating-"+i).classList.remove("bi-star-fill")
+			}
+		}
 	</script>
 </head>
 <body>
@@ -164,7 +180,7 @@
 				<p id="form-category-invalid" class="form-invalid">카테고리를 작성해주세요</p>
 			</div>
 			<div>
-				<form:input id="form-email" type="text" class="form-text form-control" placeholder="이메일" path="recruitEmail" required="true" onfocusout="upDate(this)"/>
+				<form:input id="form-email" type="email" class="form-text form-control" placeholder="이메일" path="recruitEmail" required="true" onfocusout="upDate(this)"/>
 				<p id="form-email-invalid" class="form-invalid">이메일을 작성해주세요</p>
 			</div>
 			<div>
@@ -172,7 +188,20 @@
 				<p id="form-content-invalid" class="form-invalid">내용을 작성해주세요</p>
 			</div>
 			<div class="col col-12 col-md-4">
-				<form:input id="form-rating" type="number" path="rating" class="form-control col col-12 col-md-3" placeholder="추천수" min="0" required="true" onfocusout="upDateNum(this)"/>
+				<label for="form-rating">평점</label>
+				<form:input id="form-rating" type="hidden" path="rating"/>
+				<div>
+                    <span>
+                    <i id="form-rating-1" class="form-rating-v bi bi-star" onclick="setRating(1)"></i>
+                    <i id="form-rating-2" class="form-rating-v bi bi-star" onclick="setRating(2)"></i>
+                    <i id="form-rating-3" class="form-rating-v bi bi-star" onclick="setRating(3)"></i>
+                    <i id="form-rating-4" class="form-rating-v bi bi-star" onclick="setRating(4)"></i>
+                    <i id="form-rating-5" class="form-rating-v bi bi-star" onclick="setRating(5)"></i>
+                    </span>
+					<script>
+						setRating(${gameVO.rating})
+					</script>
+				</div>
 				<p id="form-rating-invalid" class="form-invalid">평점을 입력해주세요</p>
 			</div>
 			<div class="col col-12 col-md-4">
@@ -181,7 +210,7 @@
 				<p id="form-num-invalid" class="form-invalid">모집인원을 선택해주세요</p>
 			</div>
 			<div class="justify-content-end d-flex">
-				<button type="reset" class="btn btn-secondary ms-2">취소</button>
+				<button class="btn btn-secondary ms-2" onclick="history.back()">취소</button>
 				<button class="btn btn-primary ms-2" onclick="beforeSubmit()">저장</button>
 			</div>
 		</form:form>
