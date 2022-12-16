@@ -28,6 +28,10 @@
             font-size: x-small;
             display: none;
         }
+        .form-rating-v{
+            color: #ffc552;
+            cursor: pointer;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -37,11 +41,9 @@
                     e.target.setCustomValidity("");
                 }
             }
-            document.getElementById("form-date").min = new Date().toISOString().split("T")[0];
         })
         function beforeSubmit(){
             let valid = [false, false, false, false, false, false, false]
-            //console.log(document.getElementById("form-author").checkValidity())
             if(!document.getElementById("form-title").checkValidity()){
                 document.getElementById("form-title-invalid").style.display = "block";
             }else{
@@ -78,7 +80,8 @@
                 document.getElementById("form-content-invalid").style.display = "none";
                 valid[5] = true
             }
-            if(document.getElementById("form-rating").value===0||document.getElementById("form-rating").value===null){
+            console.log(document.getElementById("form-rating").value);
+            if(document.getElementById("form-rating").value===0||document.getElementById("form-rating").value===""){
                 document.getElementById("form-rating-invalid").style.display = "block";
             }else{
                 document.getElementById("form-rating-invalid").style.display = "none";
@@ -136,6 +139,18 @@
         function updateRage(val){
             document.getElementById("form-num-val").textContent = "모집인원 ("+val.value+"명)";
         }
+
+        function setRating(val){
+            document.getElementById("form-rating").value = val;
+            for(let i = 1; i<=val; i++){
+                document.getElementById("form-rating-"+i).classList.add("bi-star-fill")
+                document.getElementById("form-rating-"+i).classList.remove("bi-star")
+            }
+            for(let i = val+1; i<=5; i++){
+                document.getElementById("form-rating-"+i).classList.add("bi-star")
+                document.getElementById("form-rating-"+i).classList.remove("bi-star-fill")
+            }
+        }
     </script>
 </head>
 <body>
@@ -163,7 +178,7 @@
                     <p id="form-category-invalid" class="form-invalid">카테고리를 작성해주세요</p>
                 </div>
                 <div>
-                    <input id="form-email" type="text" class="form-text form-control" placeholder="이메일" name="RecruitEmail" required onfocusout="upDate(this)">
+                    <input id="form-email" type="email" class="form-text form-control" placeholder="이메일" name="RecruitEmail" required onfocusout="upDate(this)">
                     <p id="form-email-invalid" class="form-invalid">이메일을 작성해주세요</p>
                 </div>
             <div>
@@ -171,7 +186,17 @@
                 <p id="form-content-invalid" class="form-invalid">내용을 작성해주세요</p>
             </div>
             <div class="col col-12 col-md-4">
-                <input id="form-rating" type="number" name="Rating" class="form-control col col-12 col-md-3" placeholder="추천수" min="0" required onfocusout="upDateNum(this)">
+                <label for="form-rating">평점</label>
+                <input id="form-rating" type="hidden" name="Rating">
+                <div>
+                    <span>
+                    <i id="form-rating-1" class="form-rating-v bi bi-star" onclick="setRating(1)"></i>
+                    <i id="form-rating-2" class="form-rating-v bi bi-star" onclick="setRating(2)"></i>
+                    <i id="form-rating-3" class="form-rating-v bi bi-star" onclick="setRating(3)"></i>
+                    <i id="form-rating-4" class="form-rating-v bi bi-star" onclick="setRating(4)"></i>
+                    <i id="form-rating-5" class="form-rating-v bi bi-star" onclick="setRating(5)"></i>
+                    </span>
+                </div>
                 <p id="form-rating-invalid" class="form-invalid">평점을 입력해주세요</p>
             </div>
             <div class="col col-12 col-md-4">

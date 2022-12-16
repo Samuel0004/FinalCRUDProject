@@ -1,79 +1,145 @@
+<%@ page import="com.example.spring2.user.UserVO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Random" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false" %>
 
+<%
+    Random rd = new Random();
+    ArrayList<String> rando = new ArrayList<>();
+    rando.add("<i class=\"fa-solid fa-gamepad\"></i>");
+    rando.add("<i class=\"fa-solid fa-dice\"></i>");
+    rando.add("<i class=\"fa-solid fa-puzzle-piece\"></i>");
+    rando.add("<i class=\"fa-solid fa-chess-knight\"></i>");
+    rando.add("<i class=\"fa-solid fa-shield-halved\"></i>");
+    rando.add("<i class=\"fa-solid fa-hat-wizard\"></i>");
+    rando.add("<i class=\"fa-solid fa-table-tennis-paddle-ball\"></i>");
+    rando.add("<i class=\"fa-solid fa-trophy\"></i>");
+    rando.add("<i class=\"fa-solid fa-vr-cardboard\"></i>");
+    rando.add("<i class=\"fa-solid fa-ghost\"></i>");
+    rando.add("<i class=\"fa-solid fa-fire-flame-curved\"></i>");
+    rando.add("<i class=\"fa-solid fa-ring\"></i>");
+    rando.add("<i class=\"fa-solid fa-gavel\"></i>");
+%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>free board</title>
+    <title>같이게임</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://kit.fontawesome.com/e38ef3acc1.js" crossorigin="anonymous"></script>
     <style>
-        #list {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
+        .card-body{
+            cursor: pointer;
         }
-        #list td, #list th {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align:center;
+        .card-header{
+            cursor: pointer;
         }
-        #list tr:nth-child(even){background-color: #f2f2f2;}
-        #list tr:hover {background-color: #ddd;}
-        #list th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: center;
-            background-color: #006bb3;
-            color: white;
+        .card-info{
+            height: 1.5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     </style>
     <script>
-        function delete_ok(id){
-            var a = confirm("정말로 삭제하겠습니까?");
-            if(a) location.href='deletepost.jsp?id=' + id;
+        let changeString = "./deleteok/";
+        function setId(val){
+            changeString="./deleteok/"+val.toString();
         }
     </script>
 </head>
 <body>
-<h1>자유게시판</h1>
-<p1>관리자 님 안녕하세요~</p1><a href="../login/logout">logout</a>
-<table id="list" width="90%">
-    <tr>
-        <th>Id</th>
-        <th>카테고리</th>
-        <th>게임</th>
-        <th>평점</th>
-        <th>이메일</th>
-        <th>등록일</th>
-        <th>더보기</th>
-        <th>수정</th>
-        <th>삭제</th>
-    </tr>
-    <c:forEach items="${list}" var="u">
-        <tr>
-            <td>${u.seq}</td>
-            <td>${u.category}</td>
-            <td>${u.gameName}</td>
-            <td>${u.rating}</td>
-            <td>${u.recruitEmail}</td>
-            <td>${u.regDate}</td>
-            <c:if test="true">
-                <td><a href="showitem/${u.seq}">더보기</a></td>
-                <td><a href="editform/${u.seq}">글수정</a></td>
-                <td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>
-            </c:if>
-        </tr>
-    </c:forEach>
-</table>
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="../game/list" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                <h3 class="me-3">같이 게임?</h3>
+                <img src="../img/game.png" class="bi me-2" width="40" height="40"/>
+            </a>
+
+            <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></div>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+<%--                <input type="search" class="form-control" placeholder="검색...">--%>
+            </form>
+
+            <div class="text-end">
+                <a href="#profileOffcanvas" data-bs-toggle="offcanvas" role="button">
+                    <i class="bi bi-person-circle" style="font-size: 30px; color: black"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <c:forEach items="${list}" var="u">
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-header" onclick="location.href='./showitem/${u.seq}'">
+                        <h4 class="card-title"><%=rando.get(rd.nextInt(rando.size()))%> ${u.gameName}</h4>
+                    </div>
+                    <div class="card-body" onclick="location.href='./showitem/${u.seq}'">
+                        <p class="card-text text-muted mb-0 card-info"><i class="bi bi-tag"></i> ${u.category}</p>
+                        <p class="card-text text-muted mb-0 card-info"><i class="bi bi bi-star-fill" style="color: #ffc552"></i> ${u.rating}</p>
+                        <p class="card-text text-muted mb-0 card-info"><i class="bi bi-people"></i> ${u.recruitNum}명</p>
+                        <p class="card-text text-muted mb-0 card-info"><i class="bi bi-envelope-at"></i> ${u.recruitEmail}</p>
+                    </div>
+                    <div class="card-footer">
+                        <c:if test='<%=((UserVO)request.getSession().getAttribute("login")).getUserid().equals("admin")%>'>
+                            <div class="d-flex justify-content-end">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-secondary bi bi-pencil" onclick="location.href='./editform/${u.seq}'"></button>
+                                    <button type="button" class="btn btn-sm btn-danger bi bi-trash" data-bs-toggle="modal" data-bs-target="#deleteConfirm" onclick="setId(${u.seq})"></button>
+                                </div>
+                            </div>
+                        </c:if>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+</div>
 <br/>
-<button type="button" onclick="location.href='add'">새글쓰기</button>
+<div class="ps-3 pe-3 justify-content-end d-flex">
+    <button type="button" class="btn btn-primary bi bi-plus" onclick="location.href='add'">새글쓰기</button>
+</div>
+<div class="offcanvas offcanvas-end" id="profileOffcanvas">
+    <div class="offcanvas-header">
+        <div class="col d-flex align-items-start">
+            <div class="d-inline-flex pe-3">
+                <i class="bi bi-person-circle" style="font-size: 32px"></i>
+            </div>
+            <div>
+                <h3><%=((UserVO) request.getSession().getAttribute("login")).getUsername()%>님</h3>
+                <p>환영합니다</p>
+            </div>
+        </div>
+    </div>
+    <div class="offcanvas-body">
+        <a href="../login/logout"><i class="bi bi-box-arrow-right"></i> 로그아웃</a>
+    </div>
+</div>
+<div class="modal fade" id="deleteConfirm" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">삭제 확인</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                정말로 삭제하시겠습니까?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                <button type="submit" class="btn btn-danger" onclick="location.href=changeString">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-<script>
-    function delete_ok(id){
-        var a = confirm("정말로 삭제하겠습니다?");
-        if(a) location.href='deleteok/' +id;
-    }
-</script>
 </html>
