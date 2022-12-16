@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Controller
 @RequestMapping(value="/game")
@@ -36,6 +37,15 @@ public class GameController {
         model.addAttribute("gameVO",gameVO);
         return "editform";
     }
+
+    @RequestMapping(value="/showitem/{id}",method=RequestMethod.GET)
+    public String showItem(@PathVariable("id")int id,Model model){
+        GameVO gameVo=gameService.getGame(id);
+        model.addAttribute("gameVO",gameVo);
+        return "showitem";
+    }
+
+
     @RequestMapping(value="/editok", method=RequestMethod.POST)
     public String editPostOk(GameVO vo){
         if (gameService.updateGame(vo) == 0)

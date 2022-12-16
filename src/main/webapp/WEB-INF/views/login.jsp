@@ -44,7 +44,7 @@
 <%--</div>--%>
 <main class="form-signin w-100 m-auto">
     <form method="post" action="loginOk">
-        <img class="mb-4 w-100" src="../img/snowman.jpg" alt="">
+        <img class="mb-4 w-100" src="../img/game.png" alt="">
         <h1 class="h3 mb-3 fw-normal">로그인</h1>
 
         <div class="form-floating">

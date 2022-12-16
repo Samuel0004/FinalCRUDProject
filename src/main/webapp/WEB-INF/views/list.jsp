@@ -53,14 +53,14 @@
     </tr>
     <c:forEach items="${list}" var="u">
         <tr>
-            <td>${u.getSeq()}</td>
-            <td>${u.getCategory()}</td>
-            <td>${u.getGameName()}</td>
-            <td>${u.getRating()}</td>
-            <td>${u.getEmail()}</td>
-            <td>${u.getRegdate()}</td>
+            <td>${u.seq}</td>
+            <td>${u.category}</td>
+            <td>${u.gameName}</td>
+            <td>${u.rating}</td>
+            <td>${u.recruitEmail}</td>
+            <td>${u.regDate}</td>
             <c:if test="true">
-                <td><a href="editform/${u.seq}">글수정</a></td>
+                <td><a href="showitem/${u.seq}">더보기</a></td>
                 <td><a href="editform/${u.seq}">글수정</a></td>
                 <td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>
             </c:if>

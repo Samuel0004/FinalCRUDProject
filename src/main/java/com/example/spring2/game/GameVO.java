@@ -17,7 +17,7 @@ public class GameVO {
     private String GameName;
     private String Content;
     private int Rating;
-    private Date TimeStamp;
+    private Date RegDate;
     private int RecruitNum;
     private String GamePublisher;
     private String RecruitEmail;

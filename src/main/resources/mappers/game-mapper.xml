@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Game">
-    <insert id="addGame">
+    <insert id="insertGame">
         insert into GAME (Category, GameName, Content, Rating, RecruitNum, GamePublisher, RecruitEmail)
         values (#{Category}, #{GameName}, #{Content}, #{Rating}, #{RecruitNum}, #{GamePublisher}, #{RecruitEmail})
     </insert>
