@@ -1,4 +1,4 @@
-package com.example.spring2;
+package com.example.spring2.user;
 
 public class UserVO {
     private String userid;

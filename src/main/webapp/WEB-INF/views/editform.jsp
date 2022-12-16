@@ -29,7 +29,7 @@
 <body>
 
 <h1>개시물 수정</h1>
-<form:form modelAttribute="boardVO" method="POST" action="../editok">
+<form:form modelAttribute="gameVO" method="POST" action="../editok">
 	<form:hidden path="seq"/>
 	<table id="edit">
 		<tr><td>카테고리</td><td><form:input path="category"/></td></tr>
