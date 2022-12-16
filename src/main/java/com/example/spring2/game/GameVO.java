@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.datetime.DateFormatter;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Getter
@@ -21,4 +23,8 @@ public class GameVO {
     private int RecruitNum;
     private String GamePublisher;
     private String RecruitEmail;
+
+    public String getPrettyDate(){
+        return new SimpleDateFormat("yyyy.MM.dd. HH:mm").format(RegDate);
+    }
 }
