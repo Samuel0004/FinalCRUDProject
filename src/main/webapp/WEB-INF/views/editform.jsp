@@ -11,7 +11,7 @@
 	<title>게임 수정</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 	<style>
 		textarea{
 			height: 200px;
@@ -44,9 +44,9 @@
 			}
 			document.getElementById("form-date").min = new Date().toISOString().split("T")[0];
 		})
+
 		function beforeSubmit(){
 			let valid = [false, false, false, false, false, false, false]
-			//console.log(document.getElementById("form-author").checkValidity())
 			if(!document.getElementById("form-title").checkValidity()){
 				document.getElementById("form-title-invalid").style.display = "block";
 			}else{
@@ -100,32 +100,7 @@
 				val.style.borderColor = "#FF6666"
 			}else{
 				val.style.borderColor = "silver"
-				switch (val.id){
-					case "form-title":
-						document.getElementById("form-title-invalid").style.display = "none";
-						break;
-					case "form-pub":
-						document.getElementById("form-pub-invalid").style.display = "none";
-						break;
-					case "form-category":
-						document.getElementById("form-category-invalid").style.display = "none";
-						break;
-					case "form-email":
-						document.getElementById("form-email-invalid").style.display = "none";
-						break;
-					case "form-content":
-						document.getElementById("form-content-invalid").style.display = "none";
-						break;
-				}
-			}
-		}
-
-		function upDateSel(val){
-			if(val.value==0){
-				val.style.borderColor = "#FF6666"
-			}else{
-				val.style.borderColor = "silver"
-				document.getElementById("form-category-invalid").style.display = "none";
+				document.getElementById(val.id+"-invalid").style.display = "none";
 			}
 		}
 
@@ -211,7 +186,7 @@
 			</div>
 			<div class="justify-content-end d-flex">
 				<button class="btn btn-secondary ms-2" onclick="history.back()">취소</button>
-				<button class="btn btn-primary ms-2" onclick="beforeSubmit()">저장</button>
+				<button type="button" class="btn btn-primary ms-2" onclick="beforeSubmit()">저장</button>
 			</div>
 		</form:form>
 	</div>

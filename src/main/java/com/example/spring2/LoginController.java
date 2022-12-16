@@ -4,6 +4,7 @@ import com.example.spring2.user.UserServiceImpl;
 import com.example.spring2.user.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -42,7 +43,22 @@ public class LoginController {
     // 로그아웃 하는 부분
     @RequestMapping(value="/logout")
     public String logout(HttpSession session) {
+        session.removeAttribute("login");
         session.invalidate();
+        return "redirect:/login/login";
+    }
+
+    @RequestMapping(value = "/signup")
+    public String signUp(HttpSession session, Model model){
+        if(session.getAttribute("login")!=null)
+            return "redirect:/board/list";
+        model.addAttribute("userList",service.getUserList());
+        return "signup";
+    }
+
+    @RequestMapping(value = "/signupok")
+    public String signUpOk(UserVO vo){
+        service.addUser(vo);
         return "redirect:/login/login";
     }
 }
