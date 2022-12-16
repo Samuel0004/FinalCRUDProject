@@ -1,4 +1,4 @@
-package com.example.spring2;
+package com.example.spring2.board;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
