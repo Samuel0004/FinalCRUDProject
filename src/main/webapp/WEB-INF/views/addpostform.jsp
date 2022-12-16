@@ -29,11 +29,13 @@
 <h1>새 글쓰기</h1>
 <form action="addok" method="post">
 <table id="list">
-    <tr><td>카테고리</td><td><input type="text" name="category"/></td></tr>
-    <tr><td>제목</td><td><input type="text" name="title"/></td></tr>
-    <tr><td>글쓴이</td><td><input type="text" name="writer"/></td></tr>
-    <tr><td>이메일</td><td><input type="text" name="email"/></td></tr>
-    <tr><td>내용</td><td><textarea cols="50" rows="5" name="content"></textarea></td></tr>
+    <tr><td>카테고리</td><td><input type="text" name="Category"/></td></tr>
+    <tr><td>게임</td><td><input type="text" name="GameName"/></td></tr>
+    <tr><td>평점</td><td><input type="" name="Rating"/></td></tr>
+    <tr><td>이메일</td><td><input type="text" name="RecruitEmail"/></td></tr>
+    <tr><td>모집인원수</td><td><input type="" name="RecruitNum"/></td></tr>
+    <tr><td>개발사</td><td><input type="text" name="GamePublisher"/></td></tr>
+    <tr><td>내용</td><td><textarea cols="50" rows="5" name="Content"></textarea></td></tr>
 </table>
     <button type="button" onclick="location.href='list'">목록보기</button>
     <button type="submit">등록하기</button>

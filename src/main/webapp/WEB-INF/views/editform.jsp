@@ -33,9 +33,11 @@
 	<form:hidden path="seq"/>
 	<table id="edit">
 		<tr><td>카테고리</td><td><form:input path="category"/></td></tr>
-		<tr><td>제목</td><td><form:input path="title"/></td></tr>
-		<tr><td>글쓴이</td><td><form:input path="writer"/></td></tr>
-		<tr><td>이메일</td><td><form:input path="email"/></td></tr>
+		<tr><td>게임</td><td><form:input path="gameName"/></td></tr>
+		<tr><td>평점</td><td><form:input path="rating"/></td></tr>
+		<tr><td>이메일</td><td><form:input path="recruitEmail"/></td></tr>
+		<tr><td>모집인원수</td><td><form:input path="recruitNum"/></td></tr>
+		<tr><td>개발자</td><td><form:input path="gamePublisher"/></td></tr>
 		<tr><td>내용</td><td><form:textarea cols="50" rows="5" path="content"/></td></tr>
 	</table>
 	<input type="submit" value="수정하기">

@@ -43,11 +43,11 @@
     <tr>
         <th>Id</th>
         <th>카테고리</th>
-        <th>제목</th>
-        <th>글쓴이</th>
+        <th>게임</th>
+        <th>평점</th>
         <th>이메일</th>
-        <th>내용</th>
         <th>등록일</th>
+        <th>더보기</th>
         <th>수정</th>
         <th>삭제</th>
     </tr>
@@ -55,12 +55,12 @@
         <tr>
             <td>${u.getSeq()}</td>
             <td>${u.getCategory()}</td>
-            <td>${u.getTitle()}</td>
-            <td>${u.getWriter()}</td>
+            <td>${u.getGameName()}</td>
+            <td>${u.getRating()}</td>
             <td>${u.getEmail()}</td>
-            <td>${u.getContent()}</td>
             <td>${u.getRegdate()}</td>
             <c:if test="true">
+                <td><a href="editform/${u.seq}">글수정</a></td>
                 <td><a href="editform/${u.seq}">글수정</a></td>
                 <td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>
             </c:if>
