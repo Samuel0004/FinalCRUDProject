@@ -44,7 +44,7 @@
 <%--</div>--%>
 <main class="form-signin w-100 m-auto">
     <form method="post" action="loginOk">
-        <img class="mb-4 w-100" src="../img/game.png" alt="">
+        <img class="mb-4 w-100" src="../img/game_title.png" alt="">
         <h1 class="h3 mb-3 fw-normal">로그인</h1>
 
         <div class="form-floating">
@@ -58,6 +58,7 @@
 
         <div class="checkbox mb-3"></div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+        <button class="btn btn-link" type="button" onclick="location.href='./signup'">회원가입</button>
         <p class="mt-5 mb-3 text-muted">&copy; 21900310 21900286</p>
     </form>
 </main>
