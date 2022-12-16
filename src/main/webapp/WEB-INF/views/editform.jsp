@@ -150,7 +150,7 @@
 	</div>
 	<div class="col col-12 col-md-6">
 		<form:form modelAttribute="gameVO" method="post" id="form" action="../editok">
-
+			<form:hidden path="seq"/>
 			<div>
 				<form:input id="form-title" type="text" class="form-text form-control" placeholder="게임 이름" path="gameName" required="true" onfocusout="upDate(this)"/>
 				<p id="form-title-invalid" class="form-invalid">게임 이름을 작성해 주세요</p>
