@@ -1,4 +1,4 @@
-package com.example.spring2;
+package com.example.spring2.login;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

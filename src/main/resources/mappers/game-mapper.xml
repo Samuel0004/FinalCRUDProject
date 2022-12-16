@@ -2,18 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Game">
-    <insert id="insertGame">
-        insert into GAME (category, gamename, content, rating, recruitnum, gamepublisher,recruitemail)
-        values
-        (#{category} , #{gamename} , #{content} , #{rating},#{recruitnum},#{gamepublisher},#{recruitemail})
+    <insert id="addGame">
+        insert into GAME (Category, GameName, Content, Rating, RecruitNum, GamePublisher, RecruitEmail)
+        values (#{Category}, #{GameName}, #{Content}, #{Rating}, #{RecruitNum}, #{GamePublisher}, #{RecruitEmail})
     </insert>
     <update id="updateGame">
-        update GAME
-        set category=#{category}, gamename=#{gamename}, conetent=#{content}, rating=#{rating}, recruitnum=#{recruitnum}, gamepublisher=#{gamepublisher},recruitemail=#{recruitemail}
+        update GAME set
+        Category=#{Category}, GameName=#{GameName}, Content=#{Content}, Rating=#{Rating}, RecruitNum=#{RecruitNum}, GamePublisher=#{GamePublisher}, RecruitEmail=#{RecruitEmail}
         where seq=#{seq}
     </update>
     <delete id="deleteGame">
-        delete from GAME where seq=#{seq}
+        delete from GAME where seq = #{seq}
     </delete>
     <select id="getGame" resultType="game">
         select * from GAME where seq=#{seq}
