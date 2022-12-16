@@ -1,5 +1,7 @@
 package com.example.spring2;
 
+import com.example.spring2.user.UserServiceImpl;
+import com.example.spring2.user.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,7 @@ public class LoginController {
     }
 
     @RequestMapping(value="/loginOk",method=RequestMethod.POST)
-    public String loginCheck(HttpSession session,UserVO vo){
+    public String loginCheck(HttpSession session, UserVO vo){
         String returnURL = "";
         if (session.getAttribute("login") != null ){
             session.removeAttribute("login");

@@ -13,7 +13,7 @@
     </bean>
 
     <mvc:resources mapping="/img/**" location="/resources/img/" />
-    <bean id="loginCheckInterceptor" class="com.example.spring2.LoginCheckInterceptor" />
+    <bean id="loginCheckInterceptor" class="com.example.spring2.login.LoginCheckInterceptor" />
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>

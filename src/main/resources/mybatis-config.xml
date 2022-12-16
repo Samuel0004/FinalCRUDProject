@@ -4,7 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias alias="board" type="com.example.spring2.BoardVO" />
-        <typeAlias alias="user" type="com.example.spring2.UserVO" />
+        <typeAlias alias="board" type="com.example.spring2.board.BoardVO" />
+        <typeAlias alias="user" type="com.example.spring2.user.UserVO" />
+        <typeAlias alias="game" type="com.example.spring2.game.GameVO" />
     </typeAliases>
 </configuration>

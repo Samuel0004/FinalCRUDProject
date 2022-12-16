@@ -38,7 +38,7 @@
 </head>
 <body>
 <h1>자유게시판</h1>
-<p1>관리자 님 안녕하세요~</p1><a href="http://localhost:8080/SpringCRUDProject_war_exploded/login/logout">logout</a>
+<p1>관리자 님 안녕하세요~</p1><a href="../login/logout">logout</a>
 <table id="list" width="90%">
     <tr>
         <th>Id</th>
@@ -60,8 +60,10 @@
             <td>${u.getEmail()}</td>
             <td>${u.getContent()}</td>
             <td>${u.getRegdate()}</td>
-            <td><a href="editform/${u.seq}">글수정</a></td>
-            <td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>
+            <c:if test="true">
+                <td><a href="editform/${u.seq}">글수정</a></td>
+                <td><a href="javascript:delete_ok('${u.seq}')">글삭제</a></td>
+            </c:if>
         </tr>
     </c:forEach>
 </table>
